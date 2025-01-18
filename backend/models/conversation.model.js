@@ -1,19 +1,19 @@
 import mongoose from "mongoose"
-import User from "./user.model"
-import Message from "./message.model"
+import User from "./user.model.js"
+import Message from "./message.model.js"
 
 const conversationSchema = new mongoose.Schema(
     {
         members: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref:"User",
+                ref:User,
             }
         ],
         messages: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref:"Message",
+                ref:Message,
                 default:[],
             }
         ]
@@ -24,5 +24,5 @@ const conversationSchema = new mongoose.Schema(
 // used when imported using require
 // module.exports = mongoose.model("Conversation",conversationSchema)
 
-const Conversation = mongoose.model("Conversation", messageSchema);
+const Conversation = mongoose.model("conversation", conversationSchema);
 export default Conversation;

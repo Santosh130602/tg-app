@@ -3,7 +3,7 @@ import User from "../models/user.model.js"
 
 const secureRoute = async (req,res,next) => {
     try{
-         const token = req.cookie.jwt
+         const token = req.cookies.jwt
          if(!token){
             return res.status(400).json({
                 success: false,
@@ -30,7 +30,8 @@ const secureRoute = async (req,res,next) => {
             })
          }
 
-         req.user = user
+         req.user = user          // comparing if req.user is equal to user to check if user is 
+         // logged in to show all users
 
          next()
 

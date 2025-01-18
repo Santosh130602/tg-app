@@ -29,7 +29,7 @@ export const signup = async (req,res)=>{
     const newUser = await new User({
       fullname,
       email,
-      password: hashedPassword
+      password: hashedPassword,
     })
 
     await newUser.save()
@@ -63,9 +63,10 @@ export const login = async (req, res)=>{
     const user = await User.findOne({email})
     
     // check if password is correct 
-    const ifPassword = await bcrypt.compare(password, user.password)
+    // const ifPassword = await bcrypt.compare(password, user.password)
+    // AGAR USER PRESENT NHI H TO PASSWORD KAISE READ KAREGA ISLIYE YAHA NHI LIKHENGE
 
-    if(!user || !ifPassword){
+    if(!user || !(await bcrypt.compare(password, user.password))){
       return res.status(400).json({
         error: "Invalid user credentials"
       })
@@ -75,7 +76,7 @@ export const login = async (req, res)=>{
     genTokenAndSaveCookie(user._id, res)
 
     // send response
-    res.status(201).json({
+    res.status(200).json({
       message: "User logged in successfully",
       user: {
         _id: user._id,
@@ -93,7 +94,7 @@ export const login = async (req, res)=>{
 export const logout = async (req, res) => {
   try{
     res.clearCookie("jwt")
-    res.status(201).json({message: "User logges out successfully"})
+    res.status(201).json({message: "User logged out successfully"})
   } catch(error){
     console.log(error)
     res.status(500).json({error: "Error while logging out. Please try later"})

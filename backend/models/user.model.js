@@ -17,10 +17,9 @@ const userSchema=mongoose.Schema({
 
     // this confirmPassword will give validation error bcz we dont want to store it in database
     // we only want to use it temporarily
-    // confirmPassword:{
-    //     type:String,
-    //     required:true,
-    // }
+    confirmPassword:{
+        type:String,
+    }
 },{timestamps:true})   // createdAt & updatedAt
 
 

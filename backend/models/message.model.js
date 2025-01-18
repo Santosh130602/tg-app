@@ -24,5 +24,5 @@ const messageSchema = new mongoose.Schema(
 // used when imported using require
 // module.exports = mongoose.model("Message",messageSchema)
 
-const Message = mongoose.model("Message", messageSchema);
+const Message = mongoose.model("message", messageSchema);
 export default Message;
