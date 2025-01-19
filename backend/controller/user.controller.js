@@ -73,7 +73,7 @@ export const login = async (req, res)=>{
     }
 
     // create token and save cookie
-    genTokenAndSaveCookie(user._id, res)
+   const token =  genTokenAndSaveCookie(user._id, res)
 
     // send response
     res.status(200).json({
@@ -81,7 +81,8 @@ export const login = async (req, res)=>{
       user: {
         _id: user._id,
         fullname: user.fullname,
-        email: user.email
+        email: user.email,
+        token:token
       }
     })
 
