@@ -30,6 +30,10 @@ try{
   console.log(error)
 }
 
+app.get('/',(req,res)=>{
+  res.send('Welcom to tg-app')
+})
+
 // routes
 app.use("/api/user", userRoute);
 app.use("/api/message",messageRoute);
