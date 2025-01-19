@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/api": {
-        target: "https://tavbandhu.onrender.com",
+        target: "https://tg-app-i3re.onrender.com",
         changeOrigin: true,
       },
     },
