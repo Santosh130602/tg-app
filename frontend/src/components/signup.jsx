@@ -30,7 +30,7 @@ function Signup() {
     };
     // console.log(userInfo);
     await axios
-      .post("api/user/signup", userInfo,)
+      .post("https://tg-app-i3re.onrender.com/api/user/signup", userInfo,)
       .then((response) => {
         // alert("Signup successfull")
         if (response.data) {

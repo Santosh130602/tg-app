@@ -20,7 +20,7 @@ function Login() {
     };
     // console.log(userInfo);
     await axios
-      .post("api/user/login", userInfo)
+      .post("https://tg-app-i3re.onrender.com/api/user/login", userInfo)
       .then((response) => {
         if (response.data) {
           toast.success("Login successful");

@@ -9,7 +9,7 @@ function Logout() {
   const handleLogout=async()=>{
     // setLoading(true)
     try{
-      await axios.post("/api/user/logout")
+      await axios.post("https://tg-app-i3re.onrender.com/api/user/logout")
       localStorage.removeItem("ChatApp")
       // Cookies.remove("jwt")    
       // already removed it in backend so this is optional
